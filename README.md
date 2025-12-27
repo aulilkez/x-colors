@@ -1,12 +1,12 @@
-# 🎨 tcolor
+# 🎨 tcolorss
 
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/tcolor.svg?style=flat-square)](https://www.npmjs.com/package/tcolor)
-[![npm downloads](https://img.shields.io/npm/dm/tcolor.svg?style=flat-square)](https://www.npmjs.com/package/tcolor)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/tcolor?style=flat-square)](https://bundlephobia.com/package/tcolor)
-[![license](https://img.shields.io/npm/l/tcolor.svg?style=flat-square)](https://github.com/yourusername/tcolor/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/tcolor?style=flat-square)](https://github.com/yourusername/tcolor)
+[![npm version](https://img.shields.io/npm/v/tcolorss.svg?style=flat-square)](https://www.npmjs.com/package/tcolorss)
+[![npm downloads](https://img.shields.io/npm/dm/tcolorss.svg?style=flat-square)](https://www.npmjs.com/package/tcolorss)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/tcolorss?style=flat-square)](https://bundlephobia.com/package/tcolorss)
+[![license](https://img.shields.io/npm/l/tcolorss.svg?style=flat-square)](https://github.com/aulilkez/tcolorss/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/aulilkez/tcolorss?style=flat-square)](https://github.com/aulilkez/tcolorss)
 
 **⚡ The fastest ANSI color library for Node.js with zero dependencies**
 
@@ -20,7 +20,7 @@ Built for maximum performance and developer experience.
 
 ## 📑 Table of Contents
 
-- [Why tcolor?](#-why-tcolor)
+- [Why tcolors?](#-why-tcolors)
 - [Features](#-features)
 - [Performance Benchmarks](#-performance-benchmarks)
 - [Installation](#-installation)
@@ -45,18 +45,18 @@ Built for maximum performance and developer experience.
 
 ---
 
-## 🎯 Why tcolor?
+## 🎯 Why tcolors?
 
-`tcolor` is built from the ground up with **performance as the #1 priority**. It provides a rich feature set while consistently outperforming popular alternatives.
+`tcolors` is built from the ground up with **performance as the #1 priority**. It provides a rich feature set while consistently outperforming popular alternatives.
 
 ```javascript
 // 🐌 Other libraries (100k ops)
 chalk.red.bold('text');      // ~451ms
 kleur.red().bold('text');    // ~726ms
 
-// ⚡ tcolor
-tcolor('text').red().bold(); // ~193ms
-tcolor.red('text');          // Even faster for single styles!
+// ⚡ tcolors
+tcolors('text').red().bold(); // ~193ms
+tcolors.red('text');          // Even faster for single styles!
 ```
 
 **Up to 145% faster than Chalk** • **Almost 300% faster than Kleur** • **Zero dependencies**
@@ -101,7 +101,7 @@ tcolor.red('text');          // Even faster for single styles!
 
 Benchmark results running 100,000 iterations. Lower is better.
 
-| Test | tcolor | Chalk | Kleur | Winner |
+| Test | tcolors | Chalk | Kleur | Winner |
 |------|--------|-------|-------|--------|
 | Simple color | 15.72ms | 20.78ms | 15.68ms | 🏆 Kleur |
 | **Chained styles** | **16.21ms** | 21.64ms | 239.79ms | 🏆 **Tcolor** |
@@ -115,7 +115,7 @@ Benchmark results running 100,000 iterations. Lower is better.
 ### Performance Graph (Total Time)
 
 ```
-tcolor: ███████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 176.55ms
+tcolors: ███████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 176.55ms
 Chalk:  ████████████████████████████████░░░░░░░░░░░░░░░░░░ 521.58ms (+195% slower)
 Kleur:  ██████████████████████████████████████████████████ 810.36ms (+359% slower)
 ```
@@ -139,17 +139,17 @@ npm run benchmark
 
 ### npm
 ```bash
-npm install tcolor
+npm install tcolors
 ```
 
 ### yarn
 ```bash
-yarn add tcolor
+yarn add tcolors
 ```
 
 ### pnpm
 ```bash
-pnpm add tcolor
+pnpm add tcolors
 ```
 
 ### Requirements
@@ -164,42 +164,42 @@ pnpm add tcolor
 ### Basic Usage (ESM)
 
 ```javascript
-import tcolor from 'tcolor';
+import tcolors from 'tcolors';
 
 // Simple colors
-console.log(tcolor('Hello World').red());
-console.log(tcolor('Success!').green().bold());
-console.log(tcolor('Warning').yellow().underline());
+console.log(tcolors('Hello World').red());
+console.log(tcolors('Success!').green().bold());
+console.log(tcolors('Warning').yellow().underline());
 
 // Background colors
-console.log(tcolor('Error').white().bgRed());
+console.log(tcolors('Error').white().bgRed());
 
 // Chaining multiple styles
-console.log(tcolor('Important').red().bold().underline().bgYellow());
+console.log(tcolors('Important').red().bold().underline().bgYellow());
 
 // Direct function calls for single styles (faster)
-console.log(tcolor.blue('Blue text'));
+console.log(tcolors.blue('Blue text'));
 ```
 
 ### CommonJS
 
 ```javascript
-const tcolor = require('tcolor');
+const tcolors = require('tcolors');
 
-console.log(tcolor('Hello').green());
-console.log(tcolor.red('Red text'));
+console.log(tcolors('Hello').green());
+console.log(tcolors.red('Red text'));
 ```
 
 ### TypeScript
 
 ```typescript
-import tcolor from 'tcolor';
+import tcolors from 'tcolors';
 
-// The tcolor object converts to a string automatically
-console.log(tcolor('TypeScript').blue().bold());
+// The tcolors object converts to a string automatically
+console.log(tcolors('TypeScript').blue().bold());
 
 // You can also explicitly convert it
-const message: string = tcolor('Explicit conversion').green().toString();
+const message: string = tcolors('Explicit conversion').green().toString();
 console.log(message);
 ```
 
@@ -212,15 +212,15 @@ console.log(message);
 Apply foreground colors to your text.
 
 ```javascript
-tcolor('text').black();
-tcolor('text').red();
-tcolor('text').green();
-tcolor('text').yellow();
-tcolor('text').blue();
-tcolor('text').magenta();
-tcolor('text').cyan();
-tcolor('text').white();
-tcolor('text').gray(); // or .grey()
+tcolors('text').black();
+tcolors('text').red();
+tcolors('text').green();
+tcolors('text').yellow();
+tcolors('text').blue();
+tcolors('text').magenta();
+tcolors('text').cyan();
+tcolors('text').white();
+tcolors('text').gray(); // or .grey()
 ```
 
 ---
@@ -230,16 +230,16 @@ tcolor('text').gray(); // or .grey()
 Apply background colors to your text.
 
 ```javascript
-tcolor('text').bgBlack();
-tcolor('text').bgRed();
-tcolor('text').bgGreen();
+tcolors('text').bgBlack();
+tcolors('text').bgRed();
+tcolors('text').bgGreen();
 // ...and so on for all basic and bright colors.
 ```
 
 **Example with Foreground + Background:**
 ```javascript
-console.log(tcolor('Success').green().bgBlack());
-console.log(tcolor('Error').white().bgRed());
+console.log(tcolors('Success').green().bgBlack());
+console.log(tcolors('Error').white().bgRed());
 ```
 
 ---
@@ -250,13 +250,13 @@ Brighter, more vibrant color variants.
 
 ```javascript
 // Bright foreground
-tcolor('text').brightRed();
-tcolor('text').brightGreen();
+tcolors('text').brightRed();
+tcolors('text').brightGreen();
 // ...etc
 
 // Bright background
-tcolor('text').bgBrightRed();
-tcolor('text').bgBrightGreen();
+tcolors('text').bgBrightRed();
+tcolors('text').bgBrightGreen();
 // ...etc
 ```
 
@@ -267,13 +267,13 @@ tcolor('text').bgBrightGreen();
 Apply text styling and formatting.
 
 ```javascript
-tcolor('text').bold();
-tcolor('text').dim();
-tcolor('text').italic();
-tcolor('text').underline();
-tcolor('text').inverse();
-tcolor('text').hidden();
-tcolor('text').strikethrough();
+tcolors('text').bold();
+tcolors('text').dim();
+tcolors('text').italic();
+tcolors('text').underline();
+tcolors('text').inverse();
+tcolors('text').hidden();
+tcolors('text').strikethrough();
 ```
 
 ---
@@ -284,11 +284,11 @@ Combine multiple styles by chaining methods in any order.
 
 ```javascript
 // Multiple styles
-tcolor('text').red().bold();
-tcolor('text').green().underline().italic();
+tcolors('text').red().bold();
+tcolors('text').green().underline().italic();
 
 // All together
-tcolor('Important!').red().bold().underline().bgYellow();
+tcolors('Important!').red().bold().underline().bgYellow();
 ```
 
 ---
@@ -299,12 +299,12 @@ Use custom RGB or Hex colors. These are converted to the nearest ANSI 256 color.
 
 ```javascript
 // RGB (0-255)
-tcolor('text').rgb(255, 100, 50);
-tcolor('text').bgRgb(30, 144, 255);
+tcolors('text').rgb(255, 100, 50);
+tcolors('text').bgRgb(30, 144, 255);
 
 // Hex (with or without #)
-tcolor('text').hex('#ff6347');
-tcolor('text').bgHex('1e90ff');
+tcolors('text').hex('#ff6347');
+tcolors('text').bgHex('1e90ff');
 ```
 
 ---
@@ -315,10 +315,10 @@ For terminals that support it, use full 24-bit RGB for maximum color precision.
 
 ```javascript
 // Foreground true color
-tcolor('text').truetcolor(255, 99, 71);
+tcolors('text').truetcolors(255, 99, 71);
 
 // Background true color
-tcolor('text').bgTruetcolor(30, 144, 255);
+tcolors('text').bgTruetcolors(30, 144, 255);
 ```
 
 ---
@@ -328,8 +328,8 @@ tcolor('text').bgTruetcolor(30, 144, 255);
 Directly use a color from the 256-color palette (0-255).
 
 ```javascript
-tcolor('text').ansi256(196);    // Bright red
-tcolor('text').bgAnsi256(21);     // Bright blue
+tcolors('text').ansi256(196);    // Bright red
+tcolors('text').bgAnsi256(21);     // Bright blue
 ```
 
 ---
@@ -340,47 +340,47 @@ Create beautiful multi-color text.
 
 ```javascript
 // Custom gradient
-const gradient = tcolor.gradient('Hello World', ['#ff0000', '#0000ff']);
+const gradient = tcolors.gradient('Hello World', ['#ff0000', '#0000ff']);
 console.log(gradient);
 
 // Rainbow effect
-console.log(tcolor.rainbow('Rainbow text!'));
+console.log(tcolors.rainbow('Rainbow text!'));
 ```
 
 ---
 
 ### Direct Functions
 
-For single styles, calling functions directly on `tcolor` is slightly faster as it avoids creating an intermediate object.
+For single styles, calling functions directly on `tcolors` is slightly faster as it avoids creating an intermediate object.
 
 ```javascript
-tcolor.red('Red text');
-tcolor.bold('Bold text');
+tcolors.red('Red text');
+tcolors.bold('Bold text');
 
 // For multiple styles, nest the calls:
-tcolor.bold(tcolor.green('Green and bold'));
+tcolors.bold(tcolors.green('Green and bold'));
 ```
 
 ---
 
 ### Utility Methods
 
-#### `tcolor.strip(text)`
+#### `tcolors.strip(text)`
 Remove all ANSI escape codes from a string.
 
 ```javascript
-const colored = tcolor('Hello').red().bold();
-const plain = tcolor.strip(colored); // .toString() is not needed
+const colored = tcolors('Hello').red().bold();
+const plain = tcolors.strip(colored); // .toString() is not needed
 
 console.log(plain);  // 'Hello'
 ```
 
-#### `tcolor.enabled`
+#### `tcolors.enabled`
 A boolean property to check if colors are currently enabled.
 
 ```javascript
-if (tcolor.enabled) {
-  console.log(tcolor.green('Colors are supported!'));
+if (tcolors.enabled) {
+  console.log(tcolors.green('Colors are supported!'));
 }
 ```
 
@@ -392,10 +392,10 @@ if (tcolor.enabled) {
 
 ```javascript
 const theme = {
-  success: (text) => tcolor(text).green(),
-  warning: (text) => tcolor(text).hex('#ffa500'), // Orange
-  error: (text) => tcolor(text).bold().red(),
-  info: (text) => tcolor.cyan(text),
+  success: (text) => tcolors(text).green(),
+  warning: (text) => tcolors(text).hex('#ffa500'), // Orange
+  error: (text) => tcolors(text).bold().red(),
+  info: (text) => tcolors.cyan(text),
 };
 
 console.log(theme.success('Operation completed.'));
@@ -409,10 +409,10 @@ function progressBar(percent) {
   const filled = Math.round(percent / 5);
   const empty = 20 - filled;
   
-  const bar = tcolor('█'.repeat(filled)).green() 
-            + tcolor('░'.repeat(empty)).gray();
+  const bar = tcolors('█'.repeat(filled)).green() 
+            + tcolors('░'.repeat(empty)).gray();
   
-  const percentage = tcolor(`${percent}%`).bold();
+  const percentage = tcolors(`${percent}%`).bold();
   
   return `${bar} ${percentage}`;
 }
@@ -424,7 +424,7 @@ console.log(progressBar(50));
 
 ## 🌍 Environment Support
 
-`tcolor` automatically detects color support. This follows standard conventions.
+`tcolors` automatically detects color support. This follows standard conventions.
 
 - **Disabled** if `NO_COLOR` environment variable is present.
 - **Enabled** if `FORCE_COLOR` environment variable is present.
@@ -433,27 +433,27 @@ console.log(progressBar(50));
 You can manually override this detection:
 ```javascript
 // Disable colors programmatically
-tcolor.enabled = false;
+tcolors.enabled = false;
 ```
 
 ---
 
 ## 💪 TypeScript Support
 
-`tcolor` is written in TypeScript and provides complete type definitions.
+`tcolors` is written in TypeScript and provides complete type definitions.
 
 ```typescript
-import tcolor, { ColorInstance, Color } from 'tcolor';
+import tcolors, { ColorInstance, Color } from 'tcolors';
 
 // The main function returns a ColorInstance
-const instance: ColorInstance = tcolor('text');
+const instance: ColorInstance = tcolors('text');
 
 // The instance can be used as a string directly
 const text: string = instance.red().bold();
 console.log('Message: ' + text);
 
 // The main export has a type
-const tcolorFn: Color = tcolor;
+const tcolorsFn: Color = tcolors;
 ```
 
 ---

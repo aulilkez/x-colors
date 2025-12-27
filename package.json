@@ -1,5 +1,5 @@
 {
-  "name": "tcolor",
+  "name": "tcolors",
   "version": "1.0.0",
   "description": "⚡ Ultra-fast ANSI color library with zero dependencies - Fastest in the ecosystem",
   "license": "MIT",
@@ -48,7 +48,7 @@
   },
   "keywords": [
     "color",
-    "tcolor",
+    "tcolors",
     "color-conversion",
     "color-manipulation",
     "ansi",
@@ -77,12 +77,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aulilkez/tcolor"
+    "url": "git+https://github.com/aulilkez/tcolors"
   },
   "bugs": {
-    "url": "https://github.com/aulilkez/tcolor/issues"
+    "url": "https://github.com/aulilkez/tcolors/issues"
   },
-  "homepage": "https://github.com/aulilkez/tcolor#readme",
+  "homepage": "https://github.com/aulilkez/tcolors#readme",
   "funding": "https://github.com/sponsors/aulilkez",
   "engines": {
     "node": ">=14"

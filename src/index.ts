@@ -14,7 +14,7 @@ const CODES = {
   hidden: [8, 28],
   strikethrough: [9, 29],
 
-  // Foreground tcolors
+  // Foreground colors
   black: [30, 39],
   red: [31, 39],
   green: [32, 39],
@@ -26,7 +26,7 @@ const CODES = {
   gray: [90, 39],
   grey: [90, 39],
 
-  // Bright foreground tcolors
+  // Bright foreground colors
   brightRed: [91, 39],
   brightGreen: [92, 39],
   brightYellow: [93, 39],
@@ -35,7 +35,7 @@ const CODES = {
   brightCyan: [96, 39],
   brightWhite: [97, 39],
 
-  // Background tcolors
+  // Background colors
   bgBlack: [40, 49],
   bgRed: [41, 49],
   bgGreen: [42, 49],
@@ -47,7 +47,7 @@ const CODES = {
   bgGray: [100, 49],
   bgGrey: [100, 49],
 
-  // Bright background tcolors
+  // Bright background colors
   bgBrightRed: [101, 49],
   bgBrightGreen: [102, 49],
   bgBrightYellow: [103, 49],
@@ -87,7 +87,7 @@ const hexToRgb = (hex: string): [number, number, number] => {
   return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
 };
 
-// Main tcolor class (optimized for chaining)
+// Main tcolors class (optimized for chaining)
 class ColorInstance {
   protected str: string;
 
@@ -98,7 +98,7 @@ class ColorInstance {
   // Generate all style methods dynamically
   [key: string]: any;
 
-  // Custom RGB tcolor (foreground)
+  // Custom RGB tcolors (foreground)
   rgb(r: number, g: number, b: number): this {
     this.str = `${ESC}38;5;${rgbToAnsi256(r, g, b)}m${this.str}${ESC}39m`;
     return this;
@@ -110,19 +110,19 @@ class ColorInstance {
     return this;
   }
 
-  // Hex tcolor support
-  hex(tcolor: string): this {
-    const [r, g, b] = hexToRgb(tcolor);
+  // Hex tcolors support
+  hex(tcolors: string): this {
+    const [r, g, b] = hexToRgb(tcolors);
     return this.rgb(r, g, b);
   }
 
   // Hex background
-  bgHex(tcolor: string): this {
-    const [r, g, b] = hexToRgb(tcolor);
+  bgHex(tcolors: string): this {
+    const [r, g, b] = hexToRgb(tcolors);
     return this.bgRgb(r, g, b);
   }
 
-  // 256 tcolor support
+  // 256 tcolors support
   ansi256(code: number): this {
     this.str = `${ESC}38;5;${code}m${this.str}${ESC}39m`;
     return this;
@@ -133,13 +133,13 @@ class ColorInstance {
     return this;
   }
 
-  // True tcolor (24-bit RGB)
-  truetcolor(r: number, g: number, b: number): this {
+  // True tcolors (24-bit RGB)
+  truecolor(r: number, g: number, b: number): this {
     this.str = `${ESC}38;2;${r};${g};${b}m${this.str}${ESC}39m`;
     return this;
   }
 
-  bgTruetcolor(r: number, g: number, b: number): this {
+  bgTruecolor(r: number, g: number, b: number): this {
     this.str = `${ESC}48;2;${r};${g};${b}m${this.str}${ESC}49m`;
     return this;
   }
@@ -165,27 +165,27 @@ Object.keys(CODES).forEach((name) => {
   };
 });
 
-// Main tcolor function (factory pattern for performance)
+// Main tcolors function (factory pattern for performance)
 interface ColorFunction {
   (str: string): ColorInstance;
   [key: string]: any;
 }
 
-const tcolor = ((str: string) => new ColorInstance(str)) as ColorFunction;
+const tcolors = ((str: string) => new ColorInstance(str)) as ColorFunction;
 
-// Add direct style functions to tcolor object
+// Add direct style functions to tcolors object
 Object.keys(CODES).forEach((name) => {
   const [open, close] = CODES[name as StyleName];
   const openCode = ESC + open + "m";
   const closeCode = ESC + close + "m";
   
-  tcolor[name] = (str: string) => openCode + str + closeCode;
+  tcolors[name] = (str: string) => openCode + str + closeCode;
 });
 
 // Utility functions
-tcolor.strip = (str: string): string => str.replace(/\x1b\[[0-9;]*m/g, "");
+tcolors.strip = (str: string): string => str.replace(/\x1b\[[0-9;]*m/g, "");
 
-tcolor.enabled =
+tcolors.enabled =
   !("NO_COLOR" in process.env) &&
   ("FORCE_COLOR" in process.env ||
     process.platform !== "win32" ||
@@ -193,9 +193,9 @@ tcolor.enabled =
     process.stdout?.isTTY);
 
 // Gradient function (optimized)
-tcolor.gradient = (text: string, tcolors: string[]): string => {
+tcolors.gradient = (text: string, colorsArr: string[]): string => {
   const len = text.length;
-  const stops = tcolors.length - 1;
+  const stops = colorsArr.length - 1;
   let result = "";
 
   for (let i = 0; i < len; i++) {
@@ -203,8 +203,8 @@ tcolor.gradient = (text: string, tcolors: string[]): string => {
     const idx = Math.floor(pos);
     const frac = pos - idx;
 
-    const [r1, g1, b1] = hexToRgb(tcolors[idx]!);
-    const [r2, g2, b2] = hexToRgb(tcolors[Math.min(idx + 1, stops)]!);
+    const [r1, g1, b1] = hexToRgb(colorsArr[idx]!);
+    const [r2, g2, b2] = hexToRgb(colorsArr[Math.min(idx + 1, stops)]!);
 
     const r = Math.round(r1 + (r2 - r1) * frac);
     const g = Math.round(g1 + (g2 - g1) * frac);
@@ -217,8 +217,8 @@ tcolor.gradient = (text: string, tcolors: string[]): string => {
 };
 
 // Rainbow effect
-tcolor.rainbow = (text: string): string =>
-  tcolor.gradient(text, [
+tcolors.rainbow = (text: string): string =>
+  tcolors.gradient(text, [
     "#ff0000",
     "#ff7f00",
     "#ffff00",
@@ -229,8 +229,8 @@ tcolor.rainbow = (text: string): string =>
   ]);
 
 // Export for both ESM and CommonJS
-export default tcolor;
-export { tcolor, ColorInstance, CODES, rgbToAnsi256, hexToRgb };
+export default tcolors;
+export { tcolors, ColorInstance, CODES, rgbToAnsi256, hexToRgb };
 
 // Type definitions
-export type Color = typeof tcolor;
+export type Color = typeof tcolors;
