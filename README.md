@@ -1,4 +1,4 @@
-# 🎨 tcolorss
+# 🎨 tcolors
 
 <div align="center">
 
